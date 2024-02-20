@@ -1,10 +1,12 @@
-{"jsc": {
-    "parser": {
+{
+    "jsc": {
+      "parser": {
         "syntax": "typescript",
         "decorators": true
-    },
-    "transform": {
-        "legacyDecorators": true,
-        "decoratorMetadata": true 
+      },
+      "transform": {
+        "legacyDecorator": true,
+        "decoratorMetadata": true
+      }
     }
-}}
+  }

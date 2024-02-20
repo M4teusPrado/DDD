@@ -1,14 +1,12 @@
-/**
- * For a detailed explanation regarding each configuration property, visit:
+/*
+ * For a detailed explanation regarding each configuration property and type check, visit:
  * https://jestjs.io/docs/configuration
  */
 
-import type { Config } from '@jest/types';
-
-const config: Config.InitialOptions  = {
-
+export default {
   transform: {
-    "^.+\\.(t|j)sx?$": "@swc/jest"
+    "^.+\.(t|j)sx?$": ["@swc/jest"],
+    
   },
   // All imported modules in your tests should be mocked automatically
   // automock: false,
@@ -17,9 +15,9 @@ const config: Config.InitialOptions  = {
   // bail: 0,
 
   // The directory where Jest should store its cached dependency information
-  // cacheDirectory: "/tmp/jest_rs",
+  // cacheDirectory: "/private/var/folders/h_/n9cr86t52279b8msmjm777z00000gn/T/jest_dx",
 
-  // Automatically clear mock calls, instances, contexts and results before every test
+  // Automatically clear mock calls, instances and results before every test
   clearMocks: true,
 
   // Indicates whether the coverage information should be collected while executing the test
@@ -56,11 +54,6 @@ const config: Config.InitialOptions  = {
   // Make calling deprecated APIs throw helpful error messages
   // errorOnDeprecated: false,
 
-  // The default configuration for fake timers
-  // fakeTimers: {
-  //   "enableGlobally": false
-  // },
-
   // Force coverage collection from ignored files using an array of glob patterns
   // forceCoverageMatch: [],
 
@@ -84,8 +77,6 @@ const config: Config.InitialOptions  = {
   // An array of file extensions your modules use
   // moduleFileExtensions: [
   //   "js",
-  //   "mjs",
-  //   "cjs",
   //   "jsx",
   //   "ts",
   //   "tsx",
@@ -178,6 +169,12 @@ const config: Config.InitialOptions  = {
   // This option allows use of a custom test runner
   // testRunner: "jest-circus/runner",
 
+  // This option sets the URL for the jsdom environment. It is reflected in properties such as location.href
+  // testURL: "http://localhost",
+
+  // Setting this value to "fake" allows the use of fake timers for functions such as "setTimeout"
+  // timers: "real",
+
   // A map from regular expressions to paths to transformers
   // transform: undefined,
 
@@ -199,5 +196,3 @@ const config: Config.InitialOptions  = {
   // Whether to use watchman for file crawling
   // watchman: true,
 };
-
-export default config;
