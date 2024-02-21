@@ -1,4 +1,5 @@
 import Order from "../../domain/entity/order";
+import OrderItem from "../../domain/entity/order_item";
 import OrderRepositoryInterface from "../../domain/repository/order-repository.interface";
 import OrderItemModel from "../db/sequelize/model/order-item.model";
 import OrderModel from "../db/sequelize/model/order.model";
@@ -35,14 +36,14 @@ export default class OrderRepository implements OrderRepositoryInterface {
         where: { id: entity.id },
       }
     );
-  
+
     // Atualizar itens do pedido
     for (const item of entity.itens) {
       await OrderItemModel.update(
         {
           quantity: item.quantity,
           name: item.name,
-          price: item.price
+          price: item.price,
         },
         {
           where: { id: item.id },
@@ -50,13 +51,45 @@ export default class OrderRepository implements OrderRepositoryInterface {
       );
     }
   }
-  
 
-  find(id: string): Promise<Order> {
-    throw new Error("Method not implemented.");
+  async find(id: string): Promise<Order> {
+    const orderModel = await OrderModel.findOne({
+      where: { id },
+      include: ["itens"],
+    });
+    return new Order(
+      orderModel.id,
+      orderModel.customerId,
+      orderModel.itens.map(
+        (item) =>
+          new OrderItem(
+            item.id,
+            item.product_id,
+            item.name,
+            item.price,
+            item.quantity
+          )
+      )
+    );
   }
 
-  findAll(): Promise<Order[]> {
-    throw new Error("Method not implemented.");
+  async findAll(): Promise<Order[]> {
+    return (await OrderModel.findAll({ include: ["itens"] })).map(
+      (orderModel) =>
+        new Order(
+          orderModel.id,
+          orderModel.customerId,
+          orderModel.itens.map(
+            (item) =>
+              new OrderItem(
+                item.id,
+                item.product_id,
+                item.name,
+                item.price,
+                item.quantity
+              )
+          )
+        )
+    );
   }
 }
