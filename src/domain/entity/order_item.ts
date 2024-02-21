@@ -6,6 +6,24 @@ export default class OrderItem {
     private _price: number;
     private _quantity: number;
 
+    get id(): string {
+        return this._id;
+    }
+
+    get productId(): string {
+        return this._productId;
+    }
+
+    get name(): string {
+        return this._name;
+    }
+
+    get quantity(): number {
+        return this._quantity;
+    }
+
+    
+
     constructor(id: string, productId: string, name: string, price: number, quantity: number) {
         this._id = id;
         this._productId = productId;
