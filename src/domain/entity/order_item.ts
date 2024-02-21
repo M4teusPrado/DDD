@@ -22,6 +22,10 @@ export default class OrderItem {
         return this._quantity;
     }
 
+    set quantity(value: number) {
+        this._quantity = value;
+    }
+
     
 
     constructor(id: string, productId: string, name: string, price: number, quantity: number) {
