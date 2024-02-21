@@ -8,8 +8,8 @@ export default class OrderService {
         return orders.reduce((acc, order) => acc + order.total(), 0);
     }
 
-    static placeOrder(customer: Customer, items: OrderItem[]) {
-        const order = new Order(uuid(), customer.id, items);
+    static placeOrder(customer: Customer, itens: OrderItem[]) {
+        const order = new Order(uuid(), customer.id, itens);
         customer.addRewardPoints(order.total() / 2);
         return order;
     }

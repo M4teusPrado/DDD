@@ -5,7 +5,7 @@ import ProductModel from "./product.model";
 import OrderModel from "./order.model";
 
 @Table({
-    tableName: 'orders_items',
+    tableName: 'orders_itens',
     timestamps: false
 })
 export default class OrderItemModel extends Model {
