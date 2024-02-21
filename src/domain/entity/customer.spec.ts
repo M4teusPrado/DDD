@@ -25,10 +25,10 @@ describe("Customer unit tests", () => {
 
         it("should activate customer", () => {
             const customer = new Customer("1", "Customer 1");
-            const address = new Address("Street 1", 126, "18117-140", "Sorocaba", "Brazil");
-            customer.address = address;
+            const address = new Address("Street 1", 126, "18117-140", "Sorocaba");
+            customer.Address = address;
             customer.activate();
-            expect(customer.isActive).toBe(true);
+            expect(customer.isActive()).toBe(true);
         });
 
         it("should throw error when activating customer without address", () => {
@@ -41,7 +41,7 @@ describe("Customer unit tests", () => {
         it("should deactivate customer", () => {
             const customer = new Customer("1", "Customer 1");
             customer.deactivate();
-            expect(customer.isActive).toBe(false);
+            expect(customer.isActive()).toBe(false);
         });
 
         it("shloud throw error when is address undefined when you activate a customer", () => {

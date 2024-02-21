@@ -1,18 +1,32 @@
 export default class Address {
 
-    _street: string = "";
-    _number: number = 0;
-    _zip: string = "";
-    _city: string = "";
-    _country: string = "";
+    private _street: string = "";
+    private _number: number = 0;
+    private _zipCode: string = "";
+    private _city: string = "";
 
-    constructor(street: string, number: number, zip: string, city: string, country: string) {
+    constructor(street: string, number: number, zipCode: string, city: string) {
         this._street = street;
         this._number = number;
-        this._zip = zip;
+        this._zipCode = zipCode;
         this._city = city;
-        this._country = country;
         this.validate();
+    }
+
+    get street(): string {
+        return this._street;
+    }
+
+    get number(): number {
+        return this._number;
+    }
+
+    get zipCode(): string {
+        return this._zipCode;
+    }
+
+    get city(): string {
+        return this._city;
     }
 
     validate() {
@@ -24,16 +38,12 @@ export default class Address {
             throw new Error("Number is required");
         }
 
-        if (this._zip === "") {
+        if (this._zipCode === "") {
             throw new Error("Zip is required");
         }
 
         if (this._city === "") {
             throw new Error("City is required");
-        }
-
-        if (this._country === "") {
-            throw new Error("Country is required");
         }
     }
 

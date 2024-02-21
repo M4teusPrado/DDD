@@ -2,6 +2,10 @@ export default class Product {
     private _id: string;
     private _name: string;
     private _price: number;
+
+    get id(): string {
+        return this._id;
+    }
     
     constructor(id: string, name: string, price: number){
         this._id = id;
