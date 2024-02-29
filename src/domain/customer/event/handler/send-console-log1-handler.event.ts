@@ -6,5 +6,6 @@ export default class SendConsoleLog1Handler implements EventHandlerInterface<Cus
     
     handle(event: CustomerCreatedEvent): void {
         console.log(`Esse é o primeiro console.log do evento: CustomerCreated`);
+        console.log("Dados do cliente:", event.eventData);
     }
 }
