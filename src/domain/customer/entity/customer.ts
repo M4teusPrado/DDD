@@ -78,4 +78,8 @@ export default class Customer {
     get id() {
         return this._id;
     }
+    
+    get address() {
+        return this._address;
+    }
 }
